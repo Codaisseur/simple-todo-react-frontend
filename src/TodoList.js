@@ -1,5 +1,6 @@
 import React from 'react';
 import jQuery from 'jquery';
+import TodoForm from './TodoForm';
 import TodoItem from './TodoItem';
 
 class TodoList extends React.Component {
@@ -11,7 +12,7 @@ class TodoList extends React.Component {
     };
   }
 
-  componentDidMount() {
+  reloadTodos(event) {
     let component = this;
 
     jQuery.getJSON("https://afternoon-atoll-31464.herokuapp.com/todos", function(data) {
@@ -23,9 +24,14 @@ class TodoList extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.reloadTodos();
+  }
+
   render() {
     return (
       <div className="todo-list">
+        <TodoForm onChange={this.reloadTodos.bind(this)} />
         <ul>
           {this.state.todos.map(function(todo, i) {
             return(
