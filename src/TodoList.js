@@ -25,13 +25,15 @@ class TodoList extends React.Component {
 
   render() {
     return (
-      <ul className="todo-list">
-        {this.state.todos.map(function(todo, i) {
-          return(
-            <TodoItem key={todo.id} id={todo.id} title={todo.title} completed={todo.completed} createdAt={todo.created_at} updatedAt={todo.updated_at} />
-          );
-        })}
-      </ul>
+      <div className="todo-list">
+        <ul>
+          {this.state.todos.map(function(todo, i) {
+            return(
+              <TodoItem key={todo.id} id={todo.id} title={todo.title} completed={todo.completed} createdAt={todo.created_at} updatedAt={todo.updated_at} />
+            );
+          })}
+        </ul>
+      </div>
     );
   }
 }

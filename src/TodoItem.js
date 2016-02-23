@@ -85,7 +85,7 @@ class TodoItem extends React.Component {
   }
 
   getClassName() {
-    let _classNames = ["todo row"];
+    let _classNames = ["todo"];
     if (this.state.loading) { _classNames.push("loading"); }
     if (this.state.completed) { _classNames.push("completed"); }
     return _classNames.join(" ");
