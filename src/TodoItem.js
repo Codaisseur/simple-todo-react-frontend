@@ -94,8 +94,10 @@ class TodoItem extends React.Component {
   render() {
     return(
       <li className={this.getClassName()}>
-        <input id={this.state.id} type="checkbox" ref="completed" checked={this.state.completed ? "checked" : ""} onChange={this.toggleChecked.bind(this)} />
-        <EditableTextField value={this.state.title} onChange={this.updateTitle.bind(this)} />
+        <input className="toggle" id={this.state.id} type="checkbox" ref="completed" checked={this.state.completed ? "checked" : ""} onChange={this.toggleChecked.bind(this)} />
+        <label for={this.state.id}>
+          <EditableTextField value={this.state.title} onChange={this.updateTitle.bind(this)} isEditable={!this.state.completed} />
+        </label>
       </li>
     );
   }

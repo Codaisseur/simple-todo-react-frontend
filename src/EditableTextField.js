@@ -4,6 +4,10 @@ class EditableTextField extends React.Component {
   constructor() {
     super();
 
+    this.props = {
+      isEditable: true
+    };
+
     this.state = {
       editing: false,
       value: ""
@@ -27,6 +31,10 @@ class EditableTextField extends React.Component {
   }
 
   setEditable(event) {
+    if (!this.props.isEditable) {
+      return;
+    }
+
     this.setState({
       editing: true
     });
