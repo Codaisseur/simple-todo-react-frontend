@@ -7,7 +7,8 @@ class Project extends React.Component {
     super();
 
     this.state = {
-      project: {}
+      project: {},
+      loading: true
     };
   }
 
@@ -16,7 +17,9 @@ class Project extends React.Component {
   }
 
   findProject() {
-    console.log("getting project...");
+    this.setState({
+      loading: true
+    });
 
     let projectId = this.props.params.projectId;
 
@@ -26,14 +29,21 @@ class Project extends React.Component {
       console.log(data);
 
       component.setState({
-        project: data.project
+        project: data.project,
+        loading: false
       });
     });
   }
 
+  getClassNames() {
+    let _classNames = ["project"];
+    if (this.state.loading) { _classNames.push("loading"); }
+    return _classNames.join(" ");
+  }
+
   render() {
     return (
-      <div className="project">
+      <div className={this.getClassNames()}>
         <h1>{this.state.project.title}</h1>
         <h2 className="text-muted">{this.state.project.description}</h2>
         <TodoList projectId={this.props.params.projectId} />

@@ -36,6 +36,22 @@
         visibility: visible;
       }
     }
+
+    &.loading {
+      h4::after {
+        content: "■■■■■■■■■■■■ ■■■■■■■■■■■■■■■■■■ ■■■■■■■";
+        letter-spacing: -3px;
+        color: lighten($brand-primary, 40%);
+        font-size: 1.4em;
+      }
+
+      p::after {
+        content: "■■■■■ ■■■■■■■ ■■■■■■■■■■■■■■■■■ ■■■■■■■■";
+        letter-spacing: -3px;
+        color: $gray-lighter;
+        font-size: 1.2em;
+      }
+    }
   }
 }
 

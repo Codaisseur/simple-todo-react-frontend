@@ -8,7 +8,9 @@ class TodoList extends React.Component {
     super();
 
     this.state = {
-      todos: [],
+      todos: [
+        {id: 0, title: "", done: false }
+      ],
       counts: {
         todo: 0,
         done: 0

@@ -19,7 +19,7 @@ class ProjectItem extends React.Component {
       description: this.props.description,
       createdAt: this.props.createdAt,
       updatedAt: this.props.updatedAt,
-      loading: false
+      loading: !!!this.props.id
     });
   }
 

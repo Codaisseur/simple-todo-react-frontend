@@ -1,4 +1,18 @@
 .project {
+
+  &.loading {
+    h1::after {
+      content: "Loading...";
+    }
+
+    h2::after {
+      content: "■■■■■■ ■■■■■■■■■■■■ ■■■■■■■ ■■■■■■■■■■■■ ■■■■■■■ ■■";
+      letter-spacing: -0.2em;
+      color: $gray-lighter;
+      font-size: 2.4em;
+    }
+  }
+
   h2 {
     text-align: center;
     font-weight: lighter;

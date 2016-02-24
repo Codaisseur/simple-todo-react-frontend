@@ -70,6 +70,15 @@
       transition: color 0.4s;
     }
 
+    &.loading {
+      label::after {
+        content: "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■";
+        letter-spacing: -3px;
+        color: $gray-lighter;
+        font-size: 1.2em;
+      }
+    }
+
     &.completed {
       @extend .text-muted;
       text-decoration: line-through;

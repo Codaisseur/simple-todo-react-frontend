@@ -18,7 +18,7 @@ class TodoItem extends React.Component {
       completed: this.props.completed,
       createdAt: this.props.createdAt,
       updatedAt: this.props.updatedAt,
-      loading: false
+      loading: !!!this.props.id
     });
   }
 

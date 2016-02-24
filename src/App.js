@@ -1,10 +1,9 @@
 import React from 'react';
-import ProjectList from './Projectlist';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div className="container master">
         {this.props.children}
       </div>
     );

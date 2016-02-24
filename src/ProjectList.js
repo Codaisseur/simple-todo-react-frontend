@@ -9,7 +9,9 @@ class ProjectList extends React.Component {
     super();
 
     this.state = {
-      projects: []
+      projects: [
+        {id: 0, title: "", description: "" }
+      ]
     };
   }
 
