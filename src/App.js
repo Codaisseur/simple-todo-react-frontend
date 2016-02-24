@@ -1,16 +1,14 @@
 import React from 'react';
-import TodoList from './Todolist';
-import './stylesheets/_bootstrap.scss';
+import ProjectList from './Projectlist';
 
 class App extends React.Component {
-    render() {
-        return (
-            <div className="container">
-              <h1>Todo List</h1>
-              <TodoList />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className="container">
+        {this.props.children}
+      </div>
+    );
+  }
 }
 
 export default App;

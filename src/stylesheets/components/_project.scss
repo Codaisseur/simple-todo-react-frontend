@@ -1,0 +1,20 @@
+.project {
+  h2 {
+    text-align: center;
+    font-weight: lighter;
+    font-style: italic;
+
+    &::before,
+    &::after {
+      font-family: $font-family-serif;
+    }
+
+    &::before {
+      content: '“ '
+    }
+
+    &::after {
+      content: '”'
+    }
+  }
+}

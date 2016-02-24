@@ -1,0 +1,54 @@
+.project-list {
+  list-style: none;
+  @extend .row;
+  background: #fff;
+  padding-top: 1em;
+  padding-bottom: 1.5em;
+  border: 1px solid #eee;
+  border-radius: 5px;
+
+  .meta {
+    margin-top: 2em;
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    @extend .row;
+  }
+
+  li.project-item {
+    @extend .col-xs-12;
+    border: 1px solid #eee;
+    font-size: 1.2em;
+
+    .destroy {
+      visibility: hidden;
+      padding: 2em 15px;
+    }
+
+    &:hover {
+      background-color: lighten($brand-primary, 40%);
+
+      &> .destroy {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+/*
+Hack to remove background from Mobile Safari.
+Can't use it globally since it destroys checkboxes in Firefox
+ */
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    .project-list li .toggle {
+      background: none;
+    }
+
+    .project-list li .toggle {
+      height: 40px;
+    }
+  }

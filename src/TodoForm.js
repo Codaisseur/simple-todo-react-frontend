@@ -11,6 +11,8 @@ class TodoForm extends React.Component {
 
     let component = this;
     let title = this.refs.newTodoInput.value;
+    let projectId = this.props.projectId;
+
     let newTodo = {
       id: null,
       title: title,
@@ -19,7 +21,7 @@ class TodoForm extends React.Component {
 
     jQuery.ajax({
       type: "POST",
-      url: "https://afternoon-atoll-31464.herokuapp.com/todos.json",
+      url: `https://afternoon-atoll-31464.herokuapp.com/projects/${projectId}/todos.json`,
       data: JSON.stringify({
           todo: newTodo
       }),
@@ -38,14 +40,18 @@ class TodoForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.createTodo.bind(this)}>
-        <div className="form-group col-xs-10">
-          <input type="text" className="form-control" ref="newTodoInput" placeholder="What needs to be done?" />
-        </div>
-        <div className="form-group col-xs-2">
-          <button type="submit" className="btn btn-primary">Save</button>
-        </div>
-      </form>
+      <div className="well">
+        <form onSubmit={this.createTodo.bind(this)}>
+          <div className="row">
+            <div className="form-group col-xs-10">
+              <input type="text" className="form-control" ref="newTodoInput" placeholder="What needs to be done?" />
+            </div>
+            <div className="form-group col-xs-2">
+              <button type="submit" className="btn btn-primary">Create</button>
+            </div>
+          </div>
+        </form>
+      </div>
     );
   }
 }

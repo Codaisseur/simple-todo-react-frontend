@@ -1,6 +1,16 @@
 .todo-list {
   list-style: none;
-  @extend .container;
+  @extend .row;
+  background: #fff;
+  padding-top: 1em;
+  padding-bottom: 1.5em;
+  border: 1px solid #eee;
+  border-radius: 5px;
+
+  .meta {
+    margin-top: 2em;
+    text-align: center;
+  }
 
   ul {
     list-style: none;
@@ -10,9 +20,8 @@
   }
 
   li.todo {
-    @extend .col-xs-10;
+    @extend .col-xs-12;
     border: 1px solid #eee;
-    border-radius: 5px;
     font-size: 1.2em;
 
     .toggle {
@@ -37,14 +46,24 @@
       content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
     }
 
-    .toggle:checked:after {
+    .toggle:checked:after,
+    .toggle:hover:checked:after {
       content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+    }
+
+    .toggle:hover:after {
+      content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#ededed" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+    }
+
+    .destroy {
+      visibility: hidden;
+      padding: 15px;
     }
 
     label {
       white-space: pre-line;
       word-break: break-all;
-      padding: 15px 60px 15px 15px;
+      padding: 16px 60px 15px 15px;
       margin-left: 45px;
       display: block;
       line-height: 1.2;
@@ -63,6 +82,14 @@
 
     input[type=checkbox] {
       margin-right: 1em;
+    }
+
+    &:hover {
+      background-color: lighten($brand-primary, 40%);
+
+      &> .destroy {
+        visibility: visible;
+      }
     }
   }
 }

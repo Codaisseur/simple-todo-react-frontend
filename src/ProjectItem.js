@@ -1,8 +1,9 @@
 import React from 'react';
 import jQuery from 'jquery';
-import EditableTextField from './EditableTextField';
+import Project from './Project';
+import { Router, Route, Link, browserHistory } from 'react-router';
 
-class TodoItem extends React.Component {
+class ProjectItem extends React.Component {
   constructor() {
     super();
 
@@ -15,7 +16,7 @@ class TodoItem extends React.Component {
     this.setState({
       id: this.props.id,
       title: this.props.title,
-      completed: this.props.completed,
+      description: this.props.description,
       createdAt: this.props.createdAt,
       updatedAt: this.props.updatedAt,
       loading: false
@@ -27,10 +28,9 @@ class TodoItem extends React.Component {
     this.syncState({title: newTitle});
   }
 
-  toggleChecked(event) {
-    this.syncState({
-      completed: this.refs.completed.checked
-    });
+  updateDescription(newDescription) {
+    console.log(newDescription);
+    this.syncState({description: newDescription});
   }
 
   syncState(updatedState) {
@@ -45,7 +45,7 @@ class TodoItem extends React.Component {
     let newState = jQuery.extend({
       id: this.state.id,
       title: this.state.title,
-      completed: this.state.completed
+      description: this.state.completed
     }, updatedState);
 
     this.setState(newState);
@@ -54,9 +54,9 @@ class TodoItem extends React.Component {
 
     jQuery.ajax({
       type: "PUT",
-      url: `https://afternoon-atoll-31464.herokuapp.com/projects/${this.props.projectId}/todos/${this.props.id}.json`,
+      url: "https://afternoon-atoll-31464.herokuapp.com/projects/" +  this.props.id + ".json",
       data: JSON.stringify({
-          todo: newState
+          project: newState
       }),
       contentType: "application/json",
       dataType: "json"
@@ -65,11 +65,11 @@ class TodoItem extends React.Component {
         console.log(data);
 
         component.setState({
-          id: data.todo.id,
-          title: data.todo.title,
-          completed: data.todo.completed,
-          createdAt: data.todo.created_at,
-          updatedAt: data.todo.updated_at
+          id: data.project.id,
+          title: data.project.title,
+          completed: data.project.completed,
+          createdAt: data.project.created_at,
+          updatedAt: data.project.updated_at
         });
       })
 
@@ -81,14 +81,12 @@ class TodoItem extends React.Component {
         component.setState({
           loading: false
         });
-        component.props.onChange();
       });
   }
 
   getClassName() {
-    let _classNames = ["todo"];
+    let _classNames = ["project-item"];
     if (this.state.loading) { _classNames.push("loading"); }
-    if (this.state.completed) { _classNames.push("completed"); }
     return _classNames.join(" ");
   }
 
@@ -100,7 +98,7 @@ class TodoItem extends React.Component {
 
     jQuery.ajax({
       type: "DELETE",
-      url: `https://afternoon-atoll-31464.herokuapp.com/projects/${this.props.projectId}/todos/${this.props.id}.json`,
+      url: "https://afternoon-atoll-31464.herokuapp.com/projects/" +  this.props.id + ".json",
       contentType: "application/json",
       dataType: "json"
     })
@@ -122,13 +120,11 @@ class TodoItem extends React.Component {
     return(
       <li className={this.getClassName()}>
         <a href="#" className="destroy pull-right" onClick={this.destroyMe.bind(this)}>x</a>
-        <input className="toggle" id={this.state.id} type="checkbox" ref="completed" checked={this.state.completed ? "checked" : ""} onChange={this.toggleChecked.bind(this)} />
-        <label for={this.state.id}>
-          <EditableTextField value={this.state.title} onChange={this.updateTitle.bind(this)} isEditable={!this.state.completed} />
-        </label>
+        <h4><Link to={`/projects/${this.state.id}`}>{this.state.title}</Link></h4>
+        <p className="text-muted">{this.state.description}</p>
       </li>
     );
   }
 }
 
-export default TodoItem;
+export default ProjectItem;

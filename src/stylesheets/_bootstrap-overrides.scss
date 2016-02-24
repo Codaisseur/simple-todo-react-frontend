@@ -1,0 +1,10 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,700,700italic,400italic,100italic,900);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700);
+
+$font-family-sans-serif:  "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif:       "Roboto Slab", Georgia, "Times New Roman", Times, serif;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+$font-family-base:        $font-family-sans-serif;
+
+$navbar-inverse-bg: #333;

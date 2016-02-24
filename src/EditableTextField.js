@@ -25,7 +25,7 @@ class EditableTextField extends React.Component {
   }
 
   handleKeyPress(event) {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" || event.keyCode == 27) {
       event.target.blur();
     }
   }
@@ -43,7 +43,9 @@ class EditableTextField extends React.Component {
   render() {
     if (this.state.editing) {
       return (
-        <input type="text" ref="input" onBlur={this.textChanged.bind(this)} onKeyPress={this.handleKeyPress.bind(this)} defaultValue={this.props.value} />
+        <div className="form-group">
+          <input type="text" className="form-control" ref="input" onBlur={this.textChanged.bind(this)} onKeyUp={this.handleKeyPress.bind(this)} defaultValue={this.props.value} />
+        </div>
       );
     } else {
       return(

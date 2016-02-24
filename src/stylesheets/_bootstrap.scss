@@ -6,6 +6,7 @@
 
 // Core variables and mixins
 @import "bootstrap/variables";
+@import "bootstrap-overrides";
 @import "bootstrap/mixins";
 
 // Reset and dependencies
@@ -54,5 +55,3 @@
 // Utility classes
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
-
-@import "components/todo-item";
